@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Salary Calculator - Presentation</title>
+    <style>
+        :root {
+            --primary-bg: #f8f9fa;
+            --slide-bg: #ffffff;
+            --text-main: #2d3748;
+            --accent-color: #2b6cb0; /* Matches Netlify/Github dark vibe */
+            --highlight: #38b2ac; /* Teal color from the calculator UI */
+            --notes-bg: #1a202c;
+            --notes-text: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Presentation Container */
+        #presentation-container {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Slides */
+        .slide {
+            position: absolute;
+            width: 80%;
+            max-width: 1000px;
+            height: 70%;
+            background: var(--slide-bg);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 3rem 4rem;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: scale(0.95);
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        /* Slide Content Styling */
+        h1 {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            border-bottom: 4px solid var(--highlight);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #718096;
+            margin-bottom: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 1.6rem;
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        li::before {
+            content: "→";
+            color: var(--highlight);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #edf2f7;
+            color: var(--accent-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .demo-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: var(--highlight);
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .demo-link:hover {
+            background-color: #2c7a7b;
+        }
+
+        /* Controls */
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            z-index: 20;
+        }
+
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+        }
+
+        #slide-counter {
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        /* Speaker Notes Panel */
+        #speaker-notes {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 35vh;
+            background: var(--notes-bg);
+            color: var(--notes-text);
+            padding: 2rem;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.2);
+            transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        #speaker-notes.open {
+            bottom: 0;
+        }
+
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #4a5568;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .notes-header h3 {
+            color: var(--highlight);
+        }
+
+        .close-notes {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .notes-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="presentation-container">
+        
+        <!-- Slide 1: Intro -->
+        <div class="slide active" data-slide="1">
+            <h1>Smart Salary Calculator</h1>
+            <div class="subtitle">מחשבון שכר חכם | Final Project Presentation</div>
+            <br>
+            <ul>
+                <li><strong>The Project:</strong> A full-stack web application for complex Israeli payroll calculations.</li>
+                <li><strong>The Inspiration:</strong> The real-world difficulty of projecting net income.</li>
+                <li><strong>The Goal:</strong> Bridge the gap between raw shift hours and actual take-home pay without needing an accounting degree.</li>
+            </ul>
+            <div class="notes-data" style="display:none;">
+                "Hello everyone, I’m Eliyahu. For my final project, I’m excited to present the Smart Salary Calculator—a full-stack web application designed to take the headache out of Israeli payroll calculations. The inspiration for this came from a very real necessity. Most workers struggle to accurately project their net income because calculating daily shift variations, mandatory pension deductions, and tax points is incredibly complex. The problem I set out to solve was bridging the gap between a worker's raw hours and their actual take-home pay, without requiring an accounting degree."
+            </div>
+        </div>
+
+        <!-- Slide 2: Solution & Audience -->
+        <div class="slide" data-slide="2">
+            <h2>The Solution & Target Audience</h2>
+            <ul>
+                <li><strong>Target Audience:</strong> Hourly or shift-based workers in Israel.</li>
+                <li><strong>User Experience:</strong> A responsive, highly visual 4-step guided wizard.</li>
+                <li><strong>Key Differentiator:</strong> Dynamic daily shift matrix.</li>
+                <li><strong>Automation:</strong> Automatically calculates 100%, 125%, and 150% overtime rates.</li>
+            </ul>
+            <div class="notes-data" style="display:none;">
+                "The solution is a responsive, highly visual 4-step wizard that guides users smoothly through their data entry. My target audience includes any hourly or shift-based worker in Israel. What sets this apart from other calculators is the intuitive breakdown—especially the dynamic daily shift matrix that automatically calculates 125% and 150% overtime rates without the user having to do the math themselves."
+            </div>
+        </div>
+
+        <!-- Slide 3: Tech Stack & AI -->
+        <div class="slide" data-slide="3">
+            <h2>Tech Stack & AI Integration</h2>
+            <div class="tech-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Vanilla JavaScript</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">Netlify</span>
+            </div>
+            <br><br>
+            <ul>
+                <li><strong>State Management:</strong> Handled natively in the browser using JavaScript.</li>
+                <li><strong>Hosting:</strong> Continuous deployment via Netlify (salarycalculator.work).</li>
+                <li><strong>AI Tools Used:</strong> GitHub Copilot Pro & Claude.</li>
+                <li><strong>AI Impact:</strong> Accelerated boilerplate, optimized tax bracket logic, and resolved CSS styling for print views.</li>
+            </ul>
+            <div class="notes-data" style="display:none;">
+                "To build this, I used a frontend stack of HTML, CSS, and vanilla JavaScript to handle the complex state management and calculation logic natively in the browser. For version control, the entire codebase is managed in a dedicated GitHub repository. From there, I set up a continuous deployment pipeline using Netlify, hosting the live application securely on a custom domain at salarycalculator.work. Because this is our AI course finale, AI played a massive role in my workflow. I actively used AI development platforms like GitHub Copilot Pro and Claude to accelerate the boilerplate coding, optimize the JavaScript logic for the tax brackets, and troubleshoot CSS styling for the final print view."
+            </div>
+        </div>
+
+        <!-- Slide 4: Challenges -->
+        <div class="slide" data-slide="4">
+            <h2>Challenges & Testing</h2>
+            <ul>
+                <li><strong>Architectural Challenge:</strong> Retaining state across steps.</li>
+                <li><strong>Data Flow:</strong> Ensuring Base Salary (Step 2) carries flawlessly into Pension Deductions (Step 4).</li>
+                <li><strong>QA Testing:</strong> Rigorous testing of the automated overtime transitions.</li>
+                <li><strong>Edge Cases:</strong> Ensuring system behaves perfectly regardless of unexpected user inputs.</li>
+            </ul>
+            <div class="notes-data" style="display:none;">
+                "Before the final deployment, I had to overcome a few significant architectural challenges. The most difficult part was state retention—ensuring that data entered in Step 2 for base salary carried over flawlessly to Step 4 for pension and study fund deductions. Extensive QA testing went into ensuring the automated transition of standard hours into overtime brackets behaved perfectly regardless of the inputs."
+            </div>
+        </div>
+
+        <!-- Slide 5: Live Demo -->
+        <div class="slide" data-slide="5" style="text-align: center;">
+            <h2>Live Demonstration</h2>
+            <p class="subtitle">Step-by-step walkthrough of the application</p>
+            
+            <a href="https://salarycalculator.work/" target="_blank" class="demo-link">Open salarycalculator.work</a>
+            
+            <div class="tech-tags" style="justify-content: center; margin-top: 3rem;">
+                <span class="tag">Step 1: Details</span>
+                <span class="tag">Step 2: Base</span>
+                <span class="tag">Step 3: Hours Matrix</span>
+                <span class="tag">Step 4: Deductions</span>
+                <span class="tag">Final Payslip</span>
+            </div>
+            
+            <div class="notes-data" style="display:none;">
+                "Let’s jump into the live demo. (Click the link to open the site).<br><br>
+                Here on the welcome screen, we keep it friendly and simple.<br>
+                Moving to Step 1, the user enters their workplace and role.<br>
+                In Step 2, we define the baseline: the month, hourly rate, and default tax points.<br>
+                Step 3 is the engine of the app. As you can see, you just log your entry and exit times, and the system automatically categorizes the 100%, 125%, and 150% hours.<br>
+                In Step 4, we calculate absences, travel expenses, and pension allocations.<br>
+                Finally, the system generates a clean, visually distinct payslip that perfectly breaks down additions and deductions, giving us the final net pay, ready to be printed or saved."
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls Bottom Bar -->
+    <div id="controls">
+        <div>
+            <button class="btn" id="btn-prev" disabled>← Previous</button>
+            <button class="btn" id="btn-next">Next →</button>
+        </div>
+        <span id="slide-counter">Slide 1 of 5</span>
+        <button class="btn" id="btn-notes" style="background: var(--highlight);">Toggle Script Notes</button>
+    </div>
+
+    <!-- Presenter Notes Overlay -->
+    <div id="speaker-notes">
+        <div class="notes-header">
+            <h3>Presenter Script</h3>
+            <button class="close-notes" id="btn-close-notes">×</button>
+        </div>
+        <div class="notes-content" id="notes-text">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const counter = document.getElementById('slide-counter');
+            const notesPanel = document.getElementById('speaker-notes');
+            const btnNotes = document.getElementById('btn-notes');
+            const btnCloseNotes = document.getElementById('btn-close-notes');
+            const notesText = document.getElementById('notes-text');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function updatePresentation() {
+                // Update slide classes
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.classList.add('active');
+                        // Load notes for current slide
+                        const noteData = slide.querySelector('.notes-data');
+                        if (noteData) {
+                            notesText.innerHTML = noteData.innerHTML;
+                        } else {
+                            notesText.innerHTML = "<em>No notes for this slide.</em>";
+                        }
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                // Update controls
+                btnPrev.disabled = currentSlide === 0;
+                btnNext.disabled = currentSlide === totalSlides - 1;
+                counter.innerText = `Slide ${currentSlide + 1} of ${totalSlides}`;
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updatePresentation();
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updatePresentation();
+                }
+            }
+
+            function toggleNotes() {
+                notesPanel.classList.toggle('open');
+            }
+
+            // Event Listeners
+            btnNext.addEventListener('click', nextSlide);
+            btnPrev.addEventListener('click', prevSlide);
+            btnNotes.addEventListener('click', toggleNotes);
+            btnCloseNotes.addEventListener('click', () => notesPanel.classList.remove('open'));
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'n' || e.key === 'N') {
+                    toggleNotes();
+                }
+            });
+
+            // Initialize
+            updatePresentation();
+        });
+    </script>
+</body>
+</html>
