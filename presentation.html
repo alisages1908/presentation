@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Salary Calculator - Presentation</title>
+    <title>מחשבון שכר חכם - מצגת</title>
     <style>
         :root {
             --primary-bg: #f8f9fa;
@@ -98,14 +98,14 @@
         li {
             margin-bottom: 1rem;
             position: relative;
-            padding-left: 2rem;
+            padding-right: 2rem;
         }
 
         li::before {
-            content: "→";
+            content: "←";
             color: var(--highlight);
             position: absolute;
-            left: 0;
+            right: 0;
             font-weight: bold;
         }
 
@@ -231,36 +231,36 @@
         
         <!-- Slide 1: Intro -->
         <div class="slide active" data-slide="1">
-            <h1>Smart Salary Calculator</h1>
-            <div class="subtitle">מחשבון שכר חכם | Final Project Presentation</div>
+            <h1>מחשבון שכר חכם</h1>
+            <div class="subtitle">מצגת פרויקט גמר</div>
             <br>
             <ul>
-                <li><strong>The Project:</strong> A full-stack web application for complex Israeli payroll calculations.</li>
-                <li><strong>The Inspiration:</strong> The real-world difficulty of projecting net income.</li>
-                <li><strong>The Goal:</strong> Bridge the gap between raw shift hours and actual take-home pay without needing an accounting degree.</li>
+                <li><strong>הפרויקט:</strong> אפליקציית רשת (Full-Stack) לחישובי שכר מורכבים בישראל.</li>
+                <li><strong>ההשראה:</strong> הקושי האמיתי בחיזוי והערכת שכר הנטו.</li>
+                <li><strong>המטרה:</strong> לגשר על הפער בין שעות המשמרת הגולמיות לשכר הנטו בפועל, ללא צורך בתואר בראיית חשבון.</li>
             </ul>
             <div class="notes-data" style="display:none;">
-                "Hello everyone, I’m Eliyahu. For my final project, I’m excited to present the Smart Salary Calculator—a full-stack web application designed to take the headache out of Israeli payroll calculations. The inspiration for this came from a very real necessity. Most workers struggle to accurately project their net income because calculating daily shift variations, mandatory pension deductions, and tax points is incredibly complex. The problem I set out to solve was bridging the gap between a worker's raw hours and their actual take-home pay, without requiring an accounting degree."
+                "שלום לכולם, אני אליהו. בפרויקט הגמר שלי, אני נרגש להציג את 'מחשבון שכר חכם' - אפליקציית רשת שנועדה לחסוך את כאב הראש הכרוך בחישובי שכר בישראל. ההשראה לכך הגיעה מצורך אמיתי. רוב העובדים מתקשים לחזות במדויק את שכר הנטו שלהם מכיוון שחישוב שינויים במשמרות יומיות, הפרשות חובה לפנסיה ונקודות זיכוי מס הוא מסובך להפליא. הבעיה שרציתי לפתור הייתה גישור על הפער בין שעות העבודה הגולמיות של העובד לשכר שהוא לוקח הביתה בפועל, מבלי לדרוש תואר בראיית חשבון."
             </div>
         </div>
 
         <!-- Slide 2: Solution & Audience -->
         <div class="slide" data-slide="2">
-            <h2>The Solution & Target Audience</h2>
+            <h2>הפתרון וקהל היעד</h2>
             <ul>
-                <li><strong>Target Audience:</strong> Hourly or shift-based workers in Israel.</li>
-                <li><strong>User Experience:</strong> A responsive, highly visual 4-step guided wizard.</li>
-                <li><strong>Key Differentiator:</strong> Dynamic daily shift matrix.</li>
-                <li><strong>Automation:</strong> Automatically calculates 100%, 125%, and 150% overtime rates.</li>
+                <li><strong>קהל היעד:</strong> עובדים שעתיים או עובדי משמרות בישראל.</li>
+                <li><strong>חווית משתמש:</strong> אשף רספונסיבי, ויזואלי ומודרך בעל 4 שלבים.</li>
+                <li><strong>הייחוד:</strong> מטריצת משמרות יומית דינמית.</li>
+                <li><strong>אוטומציה:</strong> חישוב אוטומטי של תעריפי שעות נוספות בשיעור של 100%, 125% ו-150%.</li>
             </ul>
             <div class="notes-data" style="display:none;">
-                "The solution is a responsive, highly visual 4-step wizard that guides users smoothly through their data entry. My target audience includes any hourly or shift-based worker in Israel. What sets this apart from other calculators is the intuitive breakdown—especially the dynamic daily shift matrix that automatically calculates 125% and 150% overtime rates without the user having to do the math themselves."
+                "הפתרון הוא אשף מודרך, רספונסיבי וויזואלי בעל 4 שלבים, המנחה את המשתמשים בצורה חלקה בתהליך הזנת הנתונים. קהל היעד שלי כולל כל עובד שעתי או עובד משמרות בישראל. מה שמייחד את המחשבון הזה ממחשבונים אחרים הוא הפירוט האינטואיטיבי - במיוחד מטריצת המשמרות היומית הדינמית המחשבת אוטומטית תעריפי שעות נוספות (125% ו-150%) מבלי שהמשתמש יצטרך לבצע את החישובים בעצמו."
             </div>
         </div>
 
         <!-- Slide 3: Tech Stack & AI -->
         <div class="slide" data-slide="3">
-            <h2>Tech Stack & AI Integration</h2>
+            <h2>טכנולוגיות ושילוב בינה מלאכותית</h2>
             <div class="tech-tags">
                 <span class="tag">HTML5</span>
                 <span class="tag">CSS3</span>
@@ -270,53 +270,53 @@
             </div>
             <br><br>
             <ul>
-                <li><strong>State Management:</strong> Handled natively in the browser using JavaScript.</li>
-                <li><strong>Hosting:</strong> Continuous deployment via Netlify (salarycalculator.work).</li>
-                <li><strong>AI Tools Used:</strong> Google Gemini.</li>
-                <li><strong>AI Impact:</strong> Accelerated boilerplate, optimized tax bracket logic, and resolved CSS styling for print views.</li>
+                <li><strong>ניהול מצב (State):</strong> מנוהל מקומית בדפדפן באמצעות JavaScript.</li>
+                <li><strong>אחסון (Hosting):</strong> פריסה רציפה (CI/CD) דרך Netlify בכתובת salarycalculator.work.</li>
+                <li><strong>כלי בינה מלאכותית:</strong> Google Gemini.</li>
+                <li><strong>השפעת ה-AI:</strong> האצת כתיבת קוד בסיסי (Boilerplate), אופטימיזציה ללוגיקת מדרגות המס ופתרון באגים בעיצוב תצוגת הדפסה.</li>
             </ul>
             <div class="notes-data" style="display:none;">
-                "To build this, I used a frontend stack of HTML, CSS, and vanilla JavaScript to handle the complex state management and calculation logic natively in the browser. For version control, the entire codebase is managed in a dedicated GitHub repository. From there, I set up a continuous deployment pipeline using Netlify, hosting the live application securely on a custom domain at salarycalculator.work. Because this is our AI course finale, AI played a massive role in my workflow. I actively used Google Gemini to accelerate the boilerplate coding, optimize the JavaScript logic for the tax brackets, and troubleshoot CSS styling for the final print view."
+                "כדי לבנות את זה, השתמשתי בטכנולוגיות צד לקוח של HTML, CSS ו-Vanilla JavaScript, במטרה לנהל את המצב המורכב ואת לוגיקת החישובים ישירות בדפדפן. לניהול גרסאות, כל הקוד מנוהל במאגר GitHub ייעודי. משם, הגדרתי תהליך פריסה אוטומטי באמצעות Netlify, והאפליקציה מאוחסנת בצורה מאובטחת תחת הדומיין salarycalculator.work. מכיוון שזהו פרויקט הגמר שלנו בקורס בינה מלאכותית, ל-AI היה תפקיד משמעותי בתהליך הפיתוח שלי. השתמשתי באופן פעיל ב-Google Gemini כדי להאיץ את כתיבת הקוד הבסיסי, לייעל את הלוגיקה של מדרגות המס ב-JavaScript ולפתור באגים בעיצוב ה-CSS עבור תצוגת ההדפסה הסופית."
             </div>
         </div>
 
         <!-- Slide 4: Challenges -->
         <div class="slide" data-slide="4">
-            <h2>Challenges & Testing</h2>
+            <h2>אתגרים ובדיקות</h2>
             <ul>
-                <li><strong>Architectural Challenge:</strong> Retaining state across steps.</li>
-                <li><strong>Data Flow:</strong> Ensuring Base Salary (Step 2) carries flawlessly into Pension Deductions (Step 4).</li>
-                <li><strong>QA Testing:</strong> Rigorous testing of the automated overtime transitions.</li>
-                <li><strong>Edge Cases:</strong> Ensuring system behaves perfectly regardless of unexpected user inputs.</li>
+                <li><strong>אתגר ארכיטקטוני:</strong> שמירת נתונים (State) במעבר בין שלבים.</li>
+                <li><strong>זרימת נתונים:</strong> הבטחה שנתוני שכר הבסיס (שלב 2) יעברו ללא תקלות לחישובי הניכויים לפנסיה (שלב 4).</li>
+                <li><strong>בדיקות איכות (QA):</strong> בדיקות קפדניות של המעברים האוטומטיים בין מדרגות השעות הנוספות.</li>
+                <li><strong>מקרי קצה:</strong> הבטחת התנהגות תקינה של המערכת גם במקרים של הזנות נתונים בלתי צפויות.</li>
             </ul>
             <div class="notes-data" style="display:none;">
-                "Before the final deployment, I had to overcome a few significant architectural challenges. The most difficult part was state retention—ensuring that data entered in Step 2 for base salary carried over flawlessly to Step 4 for pension and study fund deductions. Extensive QA testing went into ensuring the automated transition of standard hours into overtime brackets behaved perfectly regardless of the inputs."
+                "לפני הפריסה הסופית, נאלצתי להתמודד עם מספר אתגרים ארכיטקטוניים משמעותיים. החלק הקשה ביותר היה שמירת המצב (State) - להבטיח שהנתונים שהוזנו בשלב 2 עבור שכר הבסיס יעברו ללא תקלות לשלב 4 לטובת חישוב הפקדות לפנסיה וקרן השתלמות. בנוסף, השקעתי זמן רב בבדיקות איכות (QA) כדי להבטיח שהמעבר האוטומטי משעות רגילות לשעות נוספות יעבוד בצורה מושלמת, ללא קשר לנתונים שהמשתמש מזין."
             </div>
         </div>
 
         <!-- Slide 5: Live Demo -->
         <div class="slide" data-slide="5" style="text-align: center;">
-            <h2>Live Demonstration</h2>
-            <p class="subtitle">Step-by-step walkthrough of the application</p>
+            <h2>הדגמה חיה</h2>
+            <p class="subtitle">מעבר שלב-אחר-שלב על האפליקציה</p>
             
-            <a href="https://salarycalculator.work/" target="_blank" class="demo-link">Open salarycalculator.work</a>
+            <a href="https://salarycalculator.work/" target="_blank" class="demo-link">פתיחת salarycalculator.work</a>
             
             <div class="tech-tags" style="justify-content: center; margin-top: 3rem;">
-                <span class="tag">Step 1: Details</span>
-                <span class="tag">Step 2: Base</span>
-                <span class="tag">Step 3: Hours Matrix</span>
-                <span class="tag">Step 4: Deductions</span>
-                <span class="tag">Final Payslip</span>
+                <span class="tag">שלב 1: פרטים</span>
+                <span class="tag">שלב 2: בסיס</span>
+                <span class="tag">שלב 3: שעות</span>
+                <span class="tag">שלב 4: ניכויים</span>
+                <span class="tag">תלוש סופי</span>
             </div>
             
             <div class="notes-data" style="display:none;">
-                "Let’s jump into the live demo. (Click the link to open the site).<br><br>
-                Here on the welcome screen, we keep it friendly and simple.<br>
-                Moving to Step 1, the user enters their workplace and role.<br>
-                In Step 2, we define the baseline: the month, hourly rate, and default tax points.<br>
-                Step 3 is the engine of the app. As you can see, you just log your entry and exit times, and the system automatically categorizes the 100%, 125%, and 150% hours.<br>
-                In Step 4, we calculate absences, travel expenses, and pension allocations.<br>
-                Finally, the system generates a clean, visually distinct payslip that perfectly breaks down additions and deductions, giving us the final net pay, ready to be printed or saved."
+                "בואו נעבור להדגמה חיה. (לחיצה על הקישור לפתיחת האתר).<br><br>
+                כאן במסך הפתיחה, שמרנו על עיצוב פשוט וידידותי.<br>
+                במעבר לשלב 1, המשתמש מזין את מקום העבודה ואת התפקיד שלו.<br>
+                בשלב 2, אנו מגדירים את הנתונים הבסיסיים: החודש, תעריף שעתי ונקודות זיכוי מס.<br>
+                שלב 3 הוא המנוע של האפליקציה. כפי שניתן לראות, פשוט מזינים את שעות הכניסה והיציאה, והמערכת מסווגת אוטומטית את השעות לפי 100%, 125% ו-150%.<br>
+                בשלב 4, אנו מחשבים היעדרויות, הוצאות נסיעה והפרשות לפנסיה.<br>
+                לבסוף, המערכת מייצרת תלוש שכר נקי וברור ויזואלית, המפרט בצורה מושלמת את התוספות והניכויים ומציג לנו את שכר הנטו הסופי, מוכן להדפסה או לשמירה."
             </div>
         </div>
 
@@ -325,17 +325,17 @@
     <!-- Controls Bottom Bar -->
     <div id="controls">
         <div>
-            <button class="btn" id="btn-prev" disabled>← Previous</button>
-            <button class="btn" id="btn-next">Next →</button>
+            <button class="btn" id="btn-prev" disabled>← הקודם</button>
+            <button class="btn" id="btn-next">הבא →</button>
         </div>
-        <span id="slide-counter">Slide 1 of 5</span>
-        <button class="btn" id="btn-notes" style="background: var(--highlight);">Toggle Script Notes</button>
+        <span id="slide-counter">שקופית 1 מתוך 5</span>
+        <button class="btn" id="btn-notes" style="background: var(--highlight);">הצג/הסתר הערות דובר</button>
     </div>
 
     <!-- Presenter Notes Overlay -->
     <div id="speaker-notes">
         <div class="notes-header">
-            <h3>Presenter Script</h3>
+            <h3>הערות דובר (תסריט)</h3>
             <button class="close-notes" id="btn-close-notes">×</button>
         </div>
         <div class="notes-content" id="notes-text">
@@ -367,7 +367,7 @@
                         if (noteData) {
                             notesText.innerHTML = noteData.innerHTML;
                         } else {
-                            notesText.innerHTML = "<em>No notes for this slide.</em>";
+                            notesText.innerHTML = "<em>אין הערות לשקופית זו.</em>";
                         }
                     } else {
                         slide.classList.remove('active');
@@ -377,7 +377,7 @@
                 // Update controls
                 btnPrev.disabled = currentSlide === 0;
                 btnNext.disabled = currentSlide === totalSlides - 1;
-                counter.innerText = `Slide ${currentSlide + 1} of ${totalSlides}`;
+                counter.innerText = `שקופית ${currentSlide + 1} מתוך ${totalSlides}`;
             }
 
             function nextSlide() {
